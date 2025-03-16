@@ -1,5 +1,5 @@
 ---
-theme: geist
+theme: excali-slide
 background: https://cover.sli.dev
 title: Names, Bindings, and Scopes
 info: |
@@ -18,9 +18,7 @@ mdc: true
 **Presentation of GROUP 2**
 
 ---
-
-transition: view-transition
-
+transition: slide-left
 ---
 
 ## Names
@@ -37,28 +35,38 @@ first are capitalized, as in `myFirstCode`. It is called “camel” as words
 written as names often have embedded uppercase letters, making it look like a
 camel’s hump.
 
-Here are some naming conventions for various programming languages:
+---
 
-- Java and C# have no length limit, with all characters being significant.
-- C++ does not specify length limits, but implementors sometimes do.
-- All variable names in PHP must begin with a dollar ($) sign.
-- The special character at the beginning of a variable’s name in Perl, such as
-  $, @, or %, specifies its type.
-- The special characters at the beginning of a variable’s name in Ruby, such as
-  `@` or `@@`, specify that the variable is an instance or a class variable,
-  respectively.
+## Names
+
+| Language   | Convention                                                      | Example                   |
+| ---------- | --------------------------------------------------------------- | ------------------------- |
+| Python     | Snake case for variables and functions, Pascal case for classes | `my_variable`, `MyClass`  |
+| Java       | Camel case for variables and methods, Pascal case for classes   | `myVariable`, `MyClass`   |
+| C#         | Camel case for variables and methods, Pascal case for classes   | `myVariable`, `MyClass`   |
+| JavaScript | Camel case for variables and functions, Pascal case for classes | `myVariable`, `MyClass`   |
+| Rust       | Snake case for variables and functions, Pascal case for types   | `my_variable`, `MyType`   |
+| PHP        | Snake case for variables and functions, Pascal case for classes | `$my_variable`, `MyClass` |
 
 ---
+
+## Common Naming Conventions
 
 | Type     | Naming Convention                                                                                             | Examples                                      |
 | -------- | ------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
 | Function | Use lowercase words. Separate words by underscores to improve readability. This is called a snake case.       | function, pyt_function                        |
 | Variable | Use a lowercase single letter, word, or words. Separate words with underscores (_) to improve readability.    | z, var, pyt_variable                          |
 | Class    | Start each word with a capital letter. Do not separate words with underscores. This is called a Pascal case*. | Model, PythonClass                            |
-| Method   | Use lowercase words. Separate words with underscores to improve readability (snake case).                     | class_method, method                          |
 | Constant | Use an uppercase single letter, word, or words. Separate words with underscores to improve readability.       | CONSTANT, PYTH_CONSTANT, PYTHON_LONG_CONSTANT |
-| Module   | Use a short, lowercase word or words. Separate words with underscores to improve readability.                 | module.py, python_module.py                   |
-| Package  | Use a short, lowercase word or words. Do not separate words with underscores.                                 | package, pythonpackage                        |
+
+---
+
+## Common Naming Conventions
+
+| Type    | Naming Convention                                                                             | Examples                    |
+| ------- | --------------------------------------------------------------------------------------------- | --------------------------- |
+| Module  | Use a short, lowercase word or words. Separate words with underscores to improve readability. | module.py, python_module.py |
+| Package | Use a short,lowercase word or words. Do not separate words with underscores.                  | package,pythonpackage       |
 
 ---
 
@@ -89,20 +97,96 @@ including name, address, type, value, lifetime, and scope.
 - **Variable Names** – the most common names in programs. These are used to
   identify and reference values that can change. They can be made up of letters,
   numbers, and underscores and should be descriptive and meaningful.
-- **Variable Address** – the address of a variable is the unique machine memory
-  address it is associated with. It acts as a numerical identifier that allows
-  the program to access and manipulate the data held by the variable.
-- **Variable Type** – determines the range of values the variable can store and
-  the set of operations defined for values of the type. Examples include int,
-  float, and Boolean.
-- **Variable Value** – the contents of the memory cell or cells associated with
-  the variable. A variable’s value can also be called its r-value, as it is
-  required when the variable name appears on the right side of an assignment
-  statement.
-- **Variable Lifetime** – the amount of time it exists and retains its value in
-  memory, depending on how and where it is declared.
-- **Variable Scope** – the part of the program where a variable can be accessed.
-  It is determined by where the variable is declared in the code.
+
+```python
+age = 25
+name = "Alice"
+is_student = True
+```
+
+---
+
+## Variables
+
+**Variable Address** – the address of a variable is the unique machine memory
+address it is associated with. It acts as a numerical identifier that allows the
+program to access and manipulate the data held by the variable.
+
+```python
+import ctypes
+
+x = 10
+address = id(x)
+print(f"The address of variable x is: {address}")
+```
+
+---
+
+## Variables
+
+**Variable Type** – determines the range of values the variable can store and
+the set of operations defined for values of the type. Examples include int,
+float, and Boolean.
+
+```python
+integer_var = 10
+float_var = 10.5
+boolean_var = True
+print(type(integer_var))  # <class 'int'>
+print(type(float_var))    # <class 'float'>
+print(type(boolean_var))  # <class 'bool'>
+```
+
+---
+
+## Variables
+
+**Variable Value** – the contents of the memory cell or cells associated with
+the variable. A variable’s value can also be called its r-value, as it is
+required when the variable name appears on the right side of an assignment
+statement.
+
+```python
+x = 5
+print(f"The value of x is: {x}")
+```
+
+---
+
+## Variables
+
+**Variable Lifetime** – the amount of time it exists and retains its value in
+memory, depending on how and where it is declared.
+
+```python
+def my_function():
+  y = 10  # y is created when the function is called
+  print(y)
+my_function()
+# y no longer exists after the function call
+```
+
+---
+
+## Variables
+
+**Variable Scope** – the part of the program where a variable can be accessed.
+It is determined by where the variable is declared in the code.
+
+Example in Python:
+
+```python
+z = 20  # Global scope
+
+def my_function():
+  a = 30  # Local scope
+  print(a)
+  print(z)  # Accessing global variable
+
+my_function()
+print(z)  # Accessing global variable
+# print(a)  # This would raise an error because 'a' is not in the global scope
+```
 
 ---
 
