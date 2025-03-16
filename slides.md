@@ -432,75 +432,89 @@ print(f"x is now bound to {x} and its type is {type(x)}")
 
 ---
 
-While Python does not require explicit type declaration, the binding occurs when
-a value is assigned to a variable. Each time a value is assigned to x, Python
-"binds" that value to the variable.
+## Type Binding
 
-The type of the variable x can change dynamically, depending on the value that
-is bound to it. For example, x is first bound to an integer, then a string, then
-a float, and finally a list.
+The previous Python example demonstrates explicit variable declaration and
+binding, but it can be misleading due to the dynamic nature of Python's type
+system. In Python, variables are not bound to a specific type, and their type
+can change at runtime. This flexibility can lead to complexity and confusion
+about what the variables really do.
 
-The program uses the type() function to print the type of x after each binding.
-
-The output of this program is:
-
-```
-x is bound to 10 and its type is <class 'int'>
-x is now bound to 'Hello, world!' and its type is <class 'str'>
-x is now bound to 3.14 and its type is <class 'float'>
-x is now bound to [1, 2, 3] and its type is <class 'list'>
-```
-
-This shows the explicit binding of values to the variable x and how its type
-changes dynamically based on the value it holds.
+Here's a breakdown of how the type system works in Python and how it can be
+overridden:
 
 ---
 
-Python is dynamically typed, meaning it is unnecessary to declare the type of a
-variable when first assigning it. The type can change as the variable is bound
-to different values (integer, string, float, list, etc.).
+## Python's Dynamic Typing
 
-Dynamic type binding happens when the variable type is not specified by a
-declaration statement, nor can be determined by the spelling of its name. The
-variable is bound to a type when assigned a value in an assignment stated.
+In Python, variables are dynamically typed, meaning that the type of a variable
+is determined at runtime. You can assign any type of value to a variable, and
+you can change the type of the variable by assigning a new value of a different
+type.
 
-For implicit declaration in Python, it is demonstrated by simply assigning a
-value to a variable without specifying its type. The variable is automatically
-assigned a type based on the value it holds.
-
----
-
-For example, a Python program demonstrating implicit declaration and binding:
+### Example of Dynamic Typing
 
 ```python
-# Implicit variable declaration and binding
-# The variable 'y' is implicitly declared and bound to an integer
-y = 42
-print(f"y is implicitly bound to {y} and its type is {type(y)}")
-# The same variable 'y' is now implicitly bound to a string
-y = "Python programming"
-print(f"y is now implicitly bound to '{y}' and its type is {type(y)}")
-# Now, 'y' is implicitly bound to a float
-y = 3.14159
-print(f"y is now implicitly bound to {y} and its type is {type(y)}")
-# Finally, 'y' is implicitly bound to a list
-y = [1, 2, 3, 4]
-print(f"y is now implicitly bound to {y} and its type is {type(y)}")
+# Initial binding of an integer to variable 'x'
+x = 10
+print(f"x is bound to {x} and its type is {type(x)}")
+
+# Rebinding 'x' to a string
+x = "Hello, world!"
+print(f"x is now bound to '{x}' and its type is {type(x)}")
+
+# Rebinding 'x' to a float
+x = 3.14
+print(f"x is now bound to {x} and its type is {type(x)}")
+
+# Rebinding 'x' to a list
+x = [1, 2, 3]
+print(f"x is now bound to {x} and its type is {type(x)}")
 ```
 
-In this example, the type of variable y is not explicitly declared. Instead,
-values are assigned to y, and Python implicitly determines its type based on the
-assigned value. Python automatically binds the value to the variable and figures
-out the type behind the scenes.
+---
 
-The output of this program is:
+## Potential Issues
 
+1. **Type Confusion**: Since the type of a variable can change, it can be
+   difficult to track what type a variable holds at any given point in the code.
+   This can lead to bugs and unexpected behavior.
+
+2. **Readability**: Code readability can suffer because the type of a variable
+   is not explicitly declared and can change, making it harder for other
+   developers (or even the original developer) to understand the code.
+
+3. **Runtime Errors**: Type-related errors will only be caught at runtime, which
+   can make debugging more challenging.
+
+---
+
+## Example of Type Confusion
+
+```python
+x = 10  # x is an integer
+x = "Hello"  # x is now a string
+x = x + 5  # This will raise a TypeError because you cannot add an integer to a string
 ```
-y is implicitly bound to 42 and its type is <class 'int'>
-y is now implicitly bound to 'Python programming' and its type is <class 'str'>
-y is now implicitly bound to 3.14159 and its type is <class 'float'>
-y is now implicitly bound to [1, 2, 3, 4] and its type is <class 'list'>
+
+### Best Practices
+
+To mitigate these issues, consider the following best practices:
+
+1. **Type Annotations**: Use type annotations to indicate the expected type of a
+   variable. This can improve code readability and help with static type
+   checking tools like `mypy`.
+
+```python
+x: int = 10
+x = "Hello"  # This will raise a type checker warning
 ```
+
+2. **Consistent Typing**: Try to keep the type of a variable consistent
+   throughout its scope to avoid confusion.
+
+3. **Descriptive Variable Names**: Use descriptive variable names that indicate
+   the type or purpose of the variable.
 
 ---
 
@@ -516,24 +530,59 @@ of a variable, meaning where it can be used and modified within the code.
 
 ---
 
-## Types of Scope:
+## Types of Scope - Global Scope:
 
-Global Scope: Variables declared in the global scope are accessible from
+**Global Scope**: Variables declared in the global scope are accessible from
 anywhere in the program, including inside functions or methods. They are usually
 defined outside of any function or block of code.
 
 Example in Python:
 
 ```python
-x = 10 # Global variable
+x = 10  # Global variable
 def my_function():
-  print(x) # x is accessible here because it is in global scope
-my_function() # This will print 10
+  print(x)  # x is accessible here because it is in global scope
+my_function()  # This will print 10
+```
+
+Example in JavaScript:
+
+```javascript
+var x = 10; // Global variable
+function myFunction() {
+  console.log(x); // x is accessible here because it is in global scope
+}
+myFunction(); // This will print 10
 ```
 
 ---
 
-Local Scope: Variables declared inside a function or block of code are local
+## Types of Scope - Global Scope:
+
+Example in C#:
+
+```csharp
+using System;
+
+class Program
+{
+    static int x = 10;  // Global variable
+    static void MyFunction()
+    {
+        Console.WriteLine(x);  // x is accessible here because it is in global scope
+    }
+    static void Main()
+    {
+        MyFunction();  // This will print 10
+    }
+}
+```
+
+---
+
+## Types of Scope - Local Scope:
+
+**Local Scope**: Variables declared inside a function or block of code are local
 variables and can only be accessed within that specific function or block. They
 are not visible outside their defining scope.
 
@@ -541,27 +590,105 @@ Example in Python:
 
 ```python
 def my_function():
-  y = 5 # Local variable
+  y = 5  # Local variable
   print(y)
-my_function() # This will print 5
-print(y) # This will raise an error because 'y' is not accessible outside the function
+my_function()  # This will print 5
+print(y)  # This will raise an error because 'y' is not accessible outside the function
+```
+
+Example in JavaScript:
+
+```javascript
+function myFunction() {
+  let y = 5; // Local variable
+  console.log(y);
+}
+myFunction(); // This will print 5
+console.log(y); // This will raise an error because 'y' is not accessible outside the function
 ```
 
 ---
 
-Enclosing Scope: This refers to the scope of a function that encloses another
-function. If there is a nested function, the outer function's variables are
-available to the inner function, but not the other way around.
+## Types of Scope - Local Scope:
+
+Example in C#:
+
+```csharp
+using System;
+
+class Program
+{
+    static void MyFunction()
+    {
+        int y = 5;  // Local variable
+        Console.WriteLine(y);
+    }
+    static void Main()
+    {
+        MyFunction();  // This will print 5
+        // Console.WriteLine(y);  // This will raise an error because 'y' is not accessible outside the function
+    }
+}
+```
+
+---
+
+## Types of Scope - Enclosing Scope:
+
+**Enclosing Scope**: This refers to the scope of a function that encloses
+another function. If there is a nested function, the outer function's variables
+are available to the inner function, but not the other way around.
 
 Example in Python:
 
 ```python
 def outer_function():
-  z = 15 # Enclosing variable
+  z = 15  # Enclosing variable
   def inner_function():
-  print(z) # Accessing the enclosing scope variable
-  inner_function() # This will print 15
+    print(z)  # Accessing the enclosing scope variable
+  inner_function()  # This will print 15
 outer_function()
+```
+
+Example in JavaScript:
+
+```javascript
+function outerFunction() {
+  let z = 15; // Enclosing variable
+  function innerFunction() {
+    console.log(z); // Accessing the enclosing scope variable
+  }
+  innerFunction(); // This will print 15
+}
+outerFunction();
+```
+
+---
+
+## Types of Scope - Enclosing Scope:
+
+Example in C#:
+
+```csharp
+using System;
+
+class Program
+{
+    static void OuterFunction()
+    {
+        int z = 15;  // Enclosing variable
+        void InnerFunction()
+        {
+            Console.WriteLine(z);  // Accessing the enclosing scope variable
+        }
+        InnerFunction();  // This will print 15
+    }
+
+    static void Main()
+    {
+        OuterFunction();
+    }
+}
 ```
 
 ---
@@ -574,6 +701,12 @@ Example in Python:
 
 ```python
 print(len([1, 2, 3])) # Using built-in function `len`
+```
+
+Example in JavaScript:
+
+```javascript
+console.log([1, 2, 3].length); // Using built-in property `length`
 ```
 
 ---
@@ -605,7 +738,26 @@ print(x) # Prints 100, the global x remains unchanged
 
 ---
 
-global Keyword: In Python, to modify a global variable inside a function, it
+## Scope Rules
+
+Example in Rust:
+
+```rust
+fn main() {
+    let x = 100; // Global variable
+
+    {
+        let x = 50; // Local variable, shadows the global variable
+        println!("{}", x); // Prints 50, because the local x shadows the global x
+    }
+    
+    println!("{}", x); // Prints 100, the global x remains unchanged
+}
+```
+
+---
+
+`global` Keyword: In Python, to modify a global variable inside a function, it
 must be declared with a global keyword to avoid creating a local variable with
 the same name.
 
@@ -614,10 +766,16 @@ For example:
 ```python
 x = 10
 def modify_global():
- global x # Declare that we are modifying the global variable 'x'
- x = 20
+  global x # Declare that we are modifying the global variable 'x'
+  x = 20
 modify_global()
 print(x) # Prints 20
 ```
+
+---
+layout: center
+---
+
+## The end
 
 ---
