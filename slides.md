@@ -232,7 +232,38 @@ The variable `count` is bound to its value at run time.
 
 ---
 
-## Bindings
+# Dynamic Programming
+
+In dynamic programming languages like Python, variables are not bound to a
+specific type and can change types at runtime.
+
+```python
+# Dynamic typing in Python
+x = 10          # x is an integer
+print(type(x))  # <class 'int'>
+
+x = "Hello"     # x is now a string
+print(type(x))  # <class 'str'>
+
+x = [1, 2, 3]   # x is now a list
+print(type(x))  # <class 'list'>
+```
+
+---
+
+# Static Programming
+
+In static programming languages like Rust, variables are bound to a specific
+type at compile time and cannot change types.
+
+```rust
+// Static typing in Rust
+fn main() {
+  let x: i32 = 10;  // x is an integer
+  println!("{}", x);
+  // x = "Hello";  // This would cause a compile-time error
+}
+```
 
 ---
 layout: center
@@ -247,13 +278,11 @@ layout: center
 **Type Bindings** A variable must be bound to a data type before being
 referenced in a program. Aside from the binding time, it is also important to
 know how the type is specified. Types can be defined statically by some form of
-explicit or implicit declaration.
+_**explicit**_ or _**implicit**_ declaration.
 
----
-
-An explicit declaration is a statement in a program that lists variable names
-and specifies their particular type. It directly specifies the data type of the
-variable when declaring it.
+An **explicit** declaration is a statement in a program that lists variable
+names and specifies their particular type. It directly specifies the data type
+of the variable when declaring it.
 
 For example, in C:
 
@@ -265,17 +294,115 @@ char letter; // Explicitly declares 'letter' as a character [A, B, C]
 
 ---
 
+## Type Binding
+
+In older programming languages, variables can often be explicitly declared with
+a specific type, but they can also be nullable. This means that a variable can
+hold a value of the declared type or a special null value indicating the absence
+of a value.
+
+Here's an example in Java:
+
+```java
+String name; // Declared as a String type but not initialized
+name = null; // Explicitly set to null
+```
+
+---
+
+## Type Binding - Why is this dangerous?
+
+1. **Undefined Behavior**: If you try to use a variable that is null without
+   checking, it can lead to undefined behavior or crashes. For example, calling
+   a method on a null object will result in a `NullPointerException` in Java.
+
+   ```java
+   String name = null;
+   int length = name.length(); // This will throw a NullPointerException
+   ```
+
+2. **Hard to Debug**: Null-related bugs can be difficult to track down because
+   the null value can propagate through the code, causing errors far from the
+   original source.
+
+3. **Inconsistent State**: Allowing null values can lead to inconsistent states
+   within the application, making it harder to reason about the code.
+
+---
+
+## Type Binding - Modern Approaches
+
+Modern languages and frameworks often provide ways to avoid these issues:
+
+- **Non-nullable Types**: Some languages, like Kotlin, have non-nullable types
+  by default. You have to explicitly declare if a variable can be null.
+
+  ```kotlin
+  var name: String = "John" // Non-nullable
+  var nullableName: String? = null // Nullable
+  ```
+
+- **Optional Types**: Languages like Swift and TypeScript use optional types to
+  handle nullability more safely.
+
+  ```typescript
+  let name: string | null = null; // TypeScript
+  ```
+
+By using these modern approaches, you can reduce the risk of null-related errors
+and make your code more robust and maintainable.
+
+---
+
+## Type Bindings
+
 An implicit declaration is a means of associating variables with types through
 default conventions rather than declaration statements. It automatically assigns
 the variable’s data type based on its usage within the code without an explicit
 declaration statement. Both declarations create static bindings to types.
 
-For example, in a hypothetical language with implicit declaration:
+---
+
+## Rust
+
+In **Rust**, variables are usually explicitly declared, but type inference can
+be used to implicitly determine the type based on the assigned value.
+
+```rust
+fn main() {
+  let x = 42; // Implicitly inferred as i32
+  println!("x is {}", x);
+}
+```
+
+---
+
+## Go
+
+In Go, the `:=` operator can be used for implicit declaration and type
+inference.
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+  x := 42 // Implicitly inferred as int
+  fmt.Println(x)
+}
+```
+
+---
+
+## Python
+
+In Python, variables are dynamically typed, and their types are implicitly
+determined based on the assigned value.
 
 ```python
-# No explicit declaration for "result"
-result = 5 + 2.3
-print(result) # This would print "7.3" implying "result" was implicitly treated as a floating-point number
+x = 42  # Implicitly inferred as int
+print(f"x is {x} and its type is {type(x)}")
 ```
 
 ---
