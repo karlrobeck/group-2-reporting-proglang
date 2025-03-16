@@ -37,7 +37,19 @@ camel’s hump.
 
 ---
 
-## Names
+## Common Naming Conventions
+
+| Name       | Description                                               | Example            |
+| ---------- | --------------------------------------------------------- | ------------------ |
+| Kebab-case | Words are lowercase and separated by hyphens              | `my-variable-name` |
+| Snake_case | Words are lowercase and separated by underscores          | `my_variable_name` |
+| CamelCase  | Each word is capitalized without spaces                   | `MyVariableName`   |
+| camelCase  | First word is lowercase, subsequent words are capitalized | `myVariableName`   |
+| PascalCase | Similar to CamelCase, but often used for class names      | `MyClassName`      |
+
+---
+
+## Naming convention based on popular programming languages
 
 | Language   | Convention                                                      | Example                   |
 | ---------- | --------------------------------------------------------------- | ------------------------- |
@@ -47,26 +59,6 @@ camel’s hump.
 | JavaScript | Camel case for variables and functions, Pascal case for classes | `myVariable`, `MyClass`   |
 | Rust       | Snake case for variables and functions, Pascal case for types   | `my_variable`, `MyType`   |
 | PHP        | Snake case for variables and functions, Pascal case for classes | `$my_variable`, `MyClass` |
-
----
-
-## Common Naming Conventions
-
-| Type     | Naming Convention                                                                                             | Examples                                      |
-| -------- | ------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
-| Function | Use lowercase words. Separate words by underscores to improve readability. This is called a snake case.       | function, pyt_function                        |
-| Variable | Use a lowercase single letter, word, or words. Separate words with underscores (_) to improve readability.    | z, var, pyt_variable                          |
-| Class    | Start each word with a capital letter. Do not separate words with underscores. This is called a Pascal case*. | Model, PythonClass                            |
-| Constant | Use an uppercase single letter, word, or words. Separate words with underscores to improve readability.       | CONSTANT, PYTH_CONSTANT, PYTHON_LONG_CONSTANT |
-
----
-
-## Common Naming Conventions
-
-| Type    | Naming Convention                                                                             | Examples                    |
-| ------- | --------------------------------------------------------------------------------------------- | --------------------------- |
-| Module  | Use a short, lowercase word or words. Separate words with underscores to improve readability. | module.py, python_module.py |
-| Package | Use a short,lowercase word or words. Do not separate words with underscores.                  | package,pythonpackage       |
 
 ---
 
@@ -87,6 +79,8 @@ would assign specific text colors to reserved words once used. Here are the
 identifiers used as reserved words in Python.
 
 ---
+transition: slide-up
+---
 
 ## Variables
 
@@ -105,6 +99,8 @@ is_student = True
 ```
 
 ---
+transition: slide-up
+---
 
 ## Variables
 
@@ -120,6 +116,8 @@ address = id(x)
 print(f"The address of variable x is: {address}")
 ```
 
+---
+transition: slide-up
 ---
 
 ## Variables
@@ -138,6 +136,8 @@ print(type(boolean_var))  # <class 'bool'>
 ```
 
 ---
+transition: slide-up
+---
 
 ## Variables
 
@@ -151,6 +151,8 @@ x = 5
 print(f"The value of x is: {x}")
 ```
 
+---
+transition: slide-up
 ---
 
 ## Variables
@@ -167,13 +169,13 @@ my_function()
 ```
 
 ---
+transition: slide-up
+---
 
 ## Variables
 
 **Variable Scope** – the part of the program where a variable can be accessed.
 It is determined by where the variable is declared in the code.
-
-Example in Python:
 
 ```python
 z = 20  # Global scope
@@ -187,6 +189,12 @@ my_function()
 print(z)  # Accessing global variable
 # print(a)  # This would raise an error because 'a' is not in the global scope
 ```
+
+---
+layout: center
+---
+
+## Bindings
 
 ---
 
@@ -203,16 +211,17 @@ operation at language design time. A data type, such as int, is bound to a range
 of possible values at language implementation time. A variable in a Java program
 is bound to a particular data type at compile time.
 
+---
+
+## Bindings
+
 Using this assignment statement:
 
 ```python
-count = count – 3
+count = count - 3
 ```
 
----
-
-Here are some of the bindings and their binding times for the parts of this
-assignment:
+The variable `count` is bound to its value at run time.
 
 - The type of count is bound at compile time
 - The set of possible values of count is bound at compiler design time
@@ -221,11 +230,15 @@ assignment:
 - The internal representation of the literal 3 is bound at compiler design time
 - The value of the count is bound at execution time with this statement
 
-A clear understanding of the binding times for the attributes of program
-entities is necessary to understand the semantics of a programming language. For
-instance, to determine the current value of a variable, it can be essential to
-know when the variable was bound to storage and with which statement or
-statements.
+---
+
+## Bindings
+
+---
+layout: center
+---
+
+## Type Bindings
 
 ---
 
