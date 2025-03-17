@@ -75,8 +75,67 @@ language. This becomes difficult and a problem for programmers if the language
 includes many reserved words. For example, COBOL has 300 reserved words wherein
 some of the most commonly chosen names are in the list of reserved words such as
 LENGTH, BOTTOM, DESTINATION, and COUNT. Most times, a programming environment
-would assign specific text colors to reserved words once used. Here are the
-identifiers used as reserved words in Python.
+would assign specific text colors to reserved words once used.
+
+---
+
+## Special Words
+
+Here are the identifiers used as reserved words in Python.
+
+| Reserved Word | Description                                       | Example                 |
+| ------------- | ------------------------------------------------- | ----------------------- |
+| `False`       | Represents the boolean value false                | `a = False`             |
+| `None`        | Represents the absence of a value or a null value | `a = None`              |
+| `True`        | Represents the boolean value true                 | `a = True`              |
+| `and`         | Logical AND operator                              | `a and b`               |
+| `as`          | Used to create an alias                           | `import math as m`      |
+| `assert`      | For debugging purposes                            | `assert a == b`         |
+| `async`       | Declares an asynchronous function                 | `async def foo(): pass` |
+
+---
+
+## Special Words
+
+| Reserved Word | Description                               | Example               |
+| ------------- | ----------------------------------------- | --------------------- |
+| `await`       | Waits for the result of an async function | `await foo()`         |
+| `break`       | Terminates a loop                         | `break`               |
+| `class`       | Declares a class                          | `class MyClass: pass` |
+| `continue`    | Skips the rest of the loop iteration      | `continue`            |
+| `def`         | Declares a function                       | `def my_func(): pass` |
+| `del`         | Deletes an object                         | `del a`               |
+| `elif`        | Else if condition                         | `elif a == b:`        |
+| `else`        | Else condition                            | `else:`               |
+
+---
+
+## Special Words
+
+| Reserved Word | Description                                | Example               |
+| ------------- | ------------------------------------------ | --------------------- |
+| `except`      | Handles exceptions                         | `except ValueError:`  |
+| `finally`     | Executes code regardless of exceptions     | `finally:`            |
+| `for`         | For loop                                   | `for i in range(5):`  |
+| `from`        | Imports specific parts of a module         | `from math import pi` |
+| `global`      | Declares a global variable                 | `global a`            |
+| `if`          | If condition                               | `if a == b:`          |
+| `import`      | Imports a module                           | `import math`         |
+| `in`          | Checks if a value is present in a sequence | `if a in b:`          |
+
+---
+
+## Special Words
+
+| Reserved Word | Description                   | Example                     |
+| ------------- | ----------------------------- | --------------------------- |
+| `is`          | Tests object identity         | `if a is b:`                |
+| `lambda`      | Creates an anonymous function | `lambda x: x + 1`           |
+| `nonlocal`    | Declares a non-local variable | `nonlocal a`                |
+| `not`         | Logical NOT operator          | `not a`                     |
+| `or`          | Logical OR operator           | `a or b`                    |
+| `pass`        | Null statement, does nothing  | `pass`                      |
+| `raise`       | Raises an exception           | `raise ValueError("error")` |
 
 ---
 transition: slide-up
@@ -693,8 +752,10 @@ class Program
 
 ---
 
-Built-in Scope: The built-in scope contains all the functions and variables that
-are built into Python, like print(), len(), and int(). These are always
+## Types of Scope - Built-in Scope:
+
+**Built-in Scope**: The built-in scope contains all the functions and variables
+that are built into Python, like print(), len(), and int(). These are always
 available to use.
 
 Example in Python:
